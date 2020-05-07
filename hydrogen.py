@@ -121,8 +121,12 @@ def hte1_prod_rate(P, outT):
     pth: sepecific energy [kWh(th)/kg-H2]
     pr: production rate [kg/h]
     """
-    pth, gamma = simple_hte1(P, outT)
-    pr = P/pth*1e3
+    if P != 0:
+        pth, gamma = simple_hte1(P, outT)
+        pr = P/pth*1e3
+    else:
+        pth = 0
+        pr = 0
     return pth, pr
 
 
@@ -146,3 +150,21 @@ def si_prod_rate(P, outT):
     pth = np.interp(0.97*outT, temp, sev)
     pr = P/pth*1e3
     return pth, pr
+
+
+def electricity(mass):
+    """
+    Energy produced from H2.
+    Parameters:
+    -----------
+    mass: hydrogen mass [kg]
+    Returns:
+    --------
+    E: electrical energy [kWh]
+    """
+    # Mh = 1.008
+    # m = mass*1e3/(2*Mh)  # moles
+    # E = 285*m  # kJ
+    # E /= 3600  # kWh
+    E = 40*mass  # ~285kJ/mol = ~40kWh/kg-H2
+    return E
