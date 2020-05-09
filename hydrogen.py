@@ -83,6 +83,33 @@ def power_req(P, Te):
     return dg, tds
 
 
+def very_simple_hte1(P, outT):
+    """
+    Calculates the thermal power [Pth] required to produce 1kg/h-H2,
+    and gamma = Pth->e/Pth, Pth->e is the thermal power that is converted
+    into electricity.
+    Parameters:
+    -----------
+    P: pressure [atm]
+    outT: reactor outlet temperature [C]
+    Returns:
+    --------
+    Pth: reactor thermal power requirement [kWh/kgH2]
+    gamma: Pe/Pth
+    """
+    ef = 0.97
+    Tr = ef * outT  # Electrolysis temperature
+    eta = efficiency(Tr)
+    etagammaPth, gammacPth = power_req(P, Tr)
+    # gammacPth += delta_H(Tr, 25)
+    gammacPth += delta_H(243, 242)  # vaporization energy
+    gammaPth = etagammaPth/eta  # Electrical power
+    Pth = gammaPth + gammacPth  # P_{th} [kJ/mol] = total power
+    gamma = gammaPth/Pth  # \gamma
+    Pth = Pth/(2*1.008*3.6)  # [kWh/kg-H2]
+    return Pth, gamma
+
+
 def simple_hte1(P, outT):
     """
     Calculates the thermal power [Pth] required to produce 1kg/h-H2,
@@ -122,7 +149,7 @@ def hte1_prod_rate(P, outT):
     pr: production rate [kg/h]
     """
     if P != 0:
-        pth, gamma = simple_hte1(P, outT)
+        pth, gamma = very_simple_hte1(P, outT)
         pr = P/pth*1e3
     else:
         pth = 0
