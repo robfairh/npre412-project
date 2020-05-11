@@ -51,62 +51,68 @@ ref3@illinois.edu
 \section{Introduction}
 \label{intro}
 
+% very intro
 Energy is one of the strongest contributors to economic growth.
 In the future, economies will continue to grow, populations will do so too, and their energy demand will accompany such growth \cite{burke_impact_2018}.
 Meeting these future needs requires the development of clean energy sources as environmental concerns continue to rise.
 As seen in Figure \ref{fig:ghg}, electricity generation is one of the economic sectors that produced the most \glspl{GHG} in the \gls{US} in 2017.
 As \gls{CO2} is the main component in \glspl{GHG}, decarbonizing electricity generation will allow us to meet the increases in energy demand and address the environmental concerns at the same time.
 
-\begin{figure}[H]
+\begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/total-ghg-2019-caption.jpg}
+	\includegraphics[width=0.6\linewidth]{figures/total-ghg-2019-caption2.png}
 	\hfill
 	\caption{Total U.S. GHG Emissions by Economic Sector in 2017 \cite{us_epa_sources_2020}.}
 	\label{fig:ghg}
 \end{figure}
 
 % word on solar energy and the duck curve
-To address these concerns, utilities rely more on intermittent renewable energy resources, wind and solar \cite{ming_resource_2019}.
-However, high solar energy adoption creates a challenge. The need for electricity generators to quickly ramp up increases when the sun sets and the contribution from \gls{PV} falls \cite{us_department_of_energy_confronting_2017}.
-The California ISO developed the “duck chart (or duck curve) depicted in Figure \ref{fig:duck} to
-illustrate the difference between forecasted load and expected electricity production
-from solar during a typical March day \cite{bouillon_prepared_2014}.
+To address these concerns, utilities are relying more on intermittent renewable energy resources, wind and solar \cite{ming_resource_2019}.
+However, high solar adoption creates a challenge. The need for electricity generators to quickly ramp up increases when the sun sets and the contribution from the \gls{PV} falls \cite{us_department_of_energy_confronting_2017}.
+The "duct chart" (or duck curve) depicts this phenomenon, Figure \ref{fig:duck}.
+The California ISO developed the duck curve to illustrate the difference between forecasted load and expected electricity production from solar \cite{bouillon_prepared_2014}.
+Moreover, the duck curve reveals another issue. Over-generation may occur during the middle of the day. High-levels of non-dispatchable generation may exacerbate the situation \cite{bouillon_prepared_2014}.
 
-\begin{figure}[H]
+\begin{figure}[htbp!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/caiso-duck.png}
+	\includegraphics[width=1.0\linewidth]{figures/caiso-duck.png}
 	\hfill
 	\caption{The duck curve \cite{bouillon_prepared_2014}.}
 	\label{fig:duck}
 \end{figure}
 
 % solutions to the duck curve
-The easiest solution to a demand ramp up is the increase of dispatchable generation, such as natural gas and coal \cite{bouillon_prepared_2014}.
-Nonetheless, adding new gas and coal generation capacity is not consistent with reductions in carbon emissions.
-Hence, our focus drifts to other potential low-carbon solutions, like nuclear generation and electricity storage \cite{ming_resource_2019}.
+The simplest solution to a demand ramp up is the increase of dispatchable generation, such as natural gas and coal \cite{bouillon_prepared_2014}, and decrease of non-dispatchable generation, such as geothermal, nuclear, and hydro.
+Nonetheless, an approach like this is not consistent with the goal of reducing carbon emissions.
+Hence, our focus drifts to other potential low-carbon solutions, like nuclear generation and electricity storage by means of hydrogen production.
 
-This article analyses the likelihood of the duck curve in the \gls{US} grid system. Then, it narrows down its focus on the \gls{UIUC}'s grid and studies some possible approaches to mitigate the duck curve effects. These approaches rely on nuclear energy, the production of hydrogen, and the use of hydrogen as an energy storage mechanism. 
-% Link missing between this paragraph and the next section
+As mentioned earlier, the duck curve reveals a risk of over-generation due to high levels of non-dispatchable capacity.
+The proposed solution of this article is to use the excess of energy to produce hydrogen.
+The final application of hydrogen could be either supply the transportation sector, or use it to produce electricity during the demand peak in the evening.
+While the first solution will reduce the carbon emissions of the transportation sector, the second one will decrease the need for dispatchable sources and, consequently, reduce the carbon emissions of the electricity generation sector.
 
-%%%%%%%%%%%%%%%%%%%%%% TO DO
-% Section \ref{section:hydroprod} briefly introduces two hydrogen production methods and their energy requirements. Section \ref{section:methodology}
+This article intends to answer the following question. What is the duck curve likelihood in the \gls{US} grid?.
+Then, the analysis narrows down its focus on the \gls{UIUC}'s grid and studies the impact of producing hydrogen with a nuclear reactor.
+The following section briefly introduces two hydrogen production methods and their energy requirements.
 
-\section{Nuclear Co-Generation}
+\section{Hydrogen production}
 \label{section:hydroprod}
 
 This section presents the electrolysis process as a method to couple hydrogen production to a nuclear reactor.
 Water electrolysis converts electric and thermal energy into chemical energy stored in hydrogen \cite{hi2h2_highly_2007}.
 The process enthalpy change $\Delta H$ determines the required energy for the electrolysis reaction to take place.
-Part of the energy corresponds to electric energy $\Delta G$ and the rest of it to thermal energy $T \cdot \Delta S$ \ref{fig:electro}.
+Part of the energy corresponds to electric energy $\Delta G$ and the rest of it to thermal energy $T \cdot \Delta S$, Figure \ref{fig:electro}.
 This gives the relation
 \begin{equation}
-\Delta H = \Delta G + T \Delta S
+\Delta H = \Delta G + T \Delta S.
 \end{equation}
-.
-In liquid water electrolysis or \gls{LTE}, electricity provides the thermal energy.
-In steam electrolysis or \gls{HTE}, a high temperature heat source is necessary to supply the thermal energy.
 
-\begin{figure}[H]
+In liquid water electrolysis or \gls{LTE}, electricity generates the thermal energy.
+In steam electrolysis or \gls{HTE}, a high temperature heat source is necessary to provide the thermal energy.
+The latter has the advantage that the $\Delta G$ decreases with increasing temperature, Figure \ref{fig:electro}.
+Since heat-engine-based electrical work is limited to a production thermal efficiency of 50$\%$ or less, decreasing the electricity requirement results in higher overall production efficiencies \cite{j_e_obrien_high_2010}.
+
+\begin{figure}[htbp!]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figures/ele-heat_curve.png}
 	\hfill
@@ -115,15 +121,47 @@ In steam electrolysis or \gls{HTE}, a high temperature heat source is necessary 
 \end{figure}
 
 In this analysis, the energy source (both electric and thermal) is a nuclear reactor with co-generation capabilities.
-The nuclear reactor produces electricity to supply the grid ($P_E$) and electricity ($P_{EH2}$)and thermal energy ($P_{TH2}$) to produce hydrogen \ref{fig:h2diag}.
-$\beta$ and $\gamma$ determine the distribution of reactor thermal power $P_{th}$ into $P_E$, $P_{EH2}$, and $P_{TH2}$.
-$\eta$ is the thermal-to-electric energy conversion ration.
+The nuclear reactor supplies the grid with electricity ($P_E$) while providing a hydrogen plant with electricity ($P_{EH2}$) and thermal energy ($P_{TH2}$) Figure \ref{fig:h2diag}.
+$\beta$ and $\gamma$ determine the distribution of the reactor thermal power $P_{th}$ into $P_E$, $P_{EH2}$, and $P_{TH2}$.
+$\eta$ is the thermal-to-electric energy conversion ratio.
+This gives the following relations
+
+\begin{equation}
+\begin{split}
+P_{E} &= \eta \beta P_{th}
+\\
+P_{EH2} &= \eta \gamma (1-\beta) P_{th}.
+\\
+P_{TH2} &= (1-\gamma) (1-\beta) P_{th}.
+\\
+\gamma &= \frac{P_{EH2} / \eta}{P_{EH2} / \eta + P_{TH2}}
+\\
+\beta &= \frac{P_{E} / \eta}{P_{E} / \eta + P_{TH2}/(1-\gamma)}
+\end{split}
+\label{eq:hydro}
+\end{equation}
+
+With eq. \ref{eq:hydro} we can calculate the energy requirements for \gls{LTE} (eq. \ref{eq:hydro-lte}) and \gls{HTE} (eq. \ref{eq:hydro-hte}), respectively. Note that in \gls{LTE} electricity provides $T \cdot \Delta S$, making $\gamma$ equal to 1 and $P_{TH2}$ equal to 0.
+
+\begin{equation}
+\Delta G + T\Delta S = P_{EH2} = \eta (1-\beta) P_{th}
+\label{eq:hydro-lte}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+\Delta G &= P_{EH2} = \eta \gamma (1-\beta) P_{th}
+\\
+T\Delta S &= P_{TH2} = (1-\gamma) (1-\beta) P_{th}.
+\end{split}
+\label{eq:hydro-hte}
+\end{equation}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/hte-figure0.png}
+	\includegraphics[width=1.0\linewidth]{figures/hte-figure0.png}
 	\hfill
-	\caption{.}
+	\caption{Diagram of a nuclear power plant connected to the grid and coupled to a hydrogen plant.}
 	\label{fig:h2diag}
 \end{figure}
 
@@ -131,112 +169,141 @@ $\eta$ is the thermal-to-electric energy conversion ration.
 \label{method}
 
 We predict the total electricity generation in the \gls{US} for 2050 by doing a linear regression on the data of the total electricity generated in the US by year \cite{us_energy_information_administration_electric_2020}, Figure \ref{fig:us-pred1}.
-Using the same method, we also estimate the solar electricity generation for 2050, Figure \ref{fig:us-pred2}.
-The predictions allow us to determine a growth rate for the total ($GR_{T}$) and solar electricity generation ($GR_{S}$), eq. \ref{GR}. Where $T_i$ and $S_i$ correspond to the total and solar energy generation, respectively, in year $i$.
+Using the same method, we also estimate the solar electricity generation in the \gls{US} for 2050, Figure \ref{fig:us-pred2}.
 
-\begin{equation}
-\begin{split}
-GR_{T} &= \frac{T_{2050}} {T_{2019}}
-\\
-GR_{S} &= \frac{S_{2050}} {S_{2019}}
-\end{split}
-\label{GR}
-\end{equation}
-
-To determine the electricity generated by hour we need to choose a day first. We focus on the spring, when the solar energy produced is higher as it is sunny but the total demand it is low since people are not using electricity for air conditioning or heating \cite{us_department_of_energy_confronting_2017}.
-
-Then, we apply the growth rate to the electricity generated data by hour and we obtain a prediction on the electricity generation profile by hour in 2050.
-The hourly data is available at \cite{eia_united_2020}.
-We repeat this process on \gls{UIUC} electricity generation by hour data.
-We apply the growth rate calculated for the \gls{US} because the solar energy generation data is scarce.
-
-Once that process is complete, we propose a nuclear reactor size ($P_e$) that we will work at full capacity.
-Due to the duck curve, the electricity produced by the reactor at time $i$ ($P_i$) will exceed the demand at time $i$ (D$_i$), creating and excess of thermal energy at time $i$ ($E_i$) that will energize the hydrogen plant. We express this variables in terms of the variables in Figure \ref{fig:h2diag}, eq. \ref{eq:excess1}.
-
-\begin{equation}
-\begin{split}
-P_i &= P_{th} \eta
-\\
-D_i &= P_{E} = \eta \beta P_{th}
-\\
-E_i &= \frac{P_i-D_i}{\eta}
-\end{split}
-\label{eq:excess1}
-\end{equation}
-
-\begin{equation}
-E_i &= (1-\beta) P_{th}
-\label{eq:excess2}
-\end{equation}
-
-Into Hydrogen:
-Figure \ref{fig:h2diag}
-
-\begin{equation}
-\begin{split}
-\Delta G = P_{EH2} &= \eta \gamma (1-\beta) P_{th}
-\\
-T\Delta S = P_{TH2} &= (1-\gamma) (1-\beta) P_{th}
-\end{split}
-\label{eq:hydro}
-\end{equation}
-
-% Word on the US yearly data
+% % Word on the US yearly data
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/us-prediction1.png}
+	\includegraphics[width=1.0\linewidth]{figures/us-prediction1.png}
 	\hfill
-	\caption{Prediction on the total electricity generation in the \gls{US} for 2050}
+	\caption{Prediction on the total electricity generation in the \gls{US} for 2050.}
 	\label{fig:us-pred1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/us-prediction2.png}
+	\includegraphics[width=1.0\linewidth]{figures/us-prediction2.png}
 	\hfill
-	\caption{Prediction on the solar electricity generation in the \gls{US} for 2050}
+	\caption{Prediction on the solar electricity generation in the \gls{US} for 2050.}
 	\label{fig:us-pred2}
 \end{figure}
 
-\section{Results}
+The predictions allow us to determine the growth rate of the total ($GR_{T}$) and solar ($GR_{S}$) electricity generation, eq. \ref{GR}. Where $T_i$ and $S_i$ correspond to the total and solar electricity generation in year $i$, respectively. $N$ are the number of years that we are looking into the future.
 
-In spring of 2019, US solar generation peak on April 4 \fig{fig:us-duck}.
-In spring of 2019, UIUC solar generation peak on April 4 \fig{fig:uiuc-duck}.
+\begin{equation}
+\begin{split}
+GR_{T} &= \frac{T_{2050}-T_{2019}} {T_{2019} \cdot N }
+\\
+GR_{S} &= \frac{S_{2050}-S_{2019}} {S_{2019} \cdot N }
+\end{split}
+\label{GR}
+\end{equation}
+
+To predict the demand by hour we need to choose a day first.
+We focus on the spring, when the production of solar energy is higher, as it is sunny, but the total demand is low since people are not using electricity for air conditioning or heating \cite{us_department_of_energy_confronting_2017}.
+Then, we apply the growth rate to the demand by hour in 2019 and we obtain a prediction on the demand by hour in 2050.
+The demand hourly data is available at \cite{eia_united_2020}.
+
+Once, we have carried out the previous calculations, we repeat the process focusing on the \gls{UIUC} grid.
+We apply the growth rate calculated for the \gls{US} on the \gls{UIUC} campus electricity demand.
+We choose to use the \gls{US} growth rate as the solar energy generation data that we count with is scarce, as the solar farm at \gls{UIUC} is relatively new.
+
+With the demand predicted, the next step is to calculate the over-generated electricity. For that, we arbitrarily choose a reactor power P$_e$. We consider that the reactor operates at its maximum capacity at all times. The reactor produces P$_i$ energy every hour. The hourly demand D$_i$ previously calculated oscillates throughout the day.
+
+
+% Due to the duck curve, the electricity produced by the reactor at time $i$ ($P_i$) will exceed the demand at time $i$ (D$_i$), creating and excess of thermal energy at time $i$ ($E_i$) that will energize the hydrogen plant. We express this variables in terms of the variables in Figure \ref{fig:h2diag}, eq. \ref{eq:excess1}.
+
+% \begin{equation}
+% \begin{split}
+% P_i &= P_{th} \eta
+% \\
+% D_i &= P_{E} = \eta \beta P_{th}
+% \\
+% E_i &= \frac{P_i-D_i}{\eta}
+% \end{split}
+% \label{eq:excess1}
+% \end{equation}
+
+% \begin{equation}
+% E_i &= (1-\beta) P_{th}
+% \label{eq:excess2}
+% \end{equation}
+
+% Into Hydrogen:
+% Figure \ref{fig:h2diag}
+
+% \begin{equation}
+% \begin{split}
+% \Delta G = P_{EH2} &= \eta \gamma (1-\beta) P_{th}
+% \\
+% T\Delta S = P_{TH2} &= (1-\gamma) (1-\beta) P_{th}
+% \end{split}
+% \label{eq:hydro}
+% \end{equation}
+
+All the calculations were carried out using a script written in python.
+
+\section{Results}
+\label{results}
+
+The prediction on the total and solar electricity production in the \gls{US} for 2050 gives $GR_T$ and $GR_S$, Table \ref{tab:grate}.
+
+\floatsetup[table]{capposition=top}
+\begin{table}[!htb]
+    \begin{tabular}{|l|l|}
+        \hline
+        $GR_T$ & 0.026 $\%$/year \\ \hline
+        $GR_S$ & 16.5 $\%$/year \\ \hline
+    \end{tabular}
+    \caption{\gls{US} electricity production growth rate.}
+    \label{tab:grate}
+\end{table}
+
+In spring of 2019, the solar generation in the \gls{US} peaked on April 17.
+Figure \ref{fig:us-duck} shows the solar electricity generated by hour in the \gls{US} and the difference between total and solar electricity generated in the \gls{US} on that day.
+The plot also presents the prediction on solar electricity generated in the \gls{US} and the difference between total and solar electricity generated in the \gls{US} in 2050.
+Figure \ref{fig:uiuc-duck} presents the results for UIUC's grid.
+In spring of 2019, UIUC's solar generation peaked on April 4.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/duck-curve4.png}
+	\includegraphics[width=1.0\linewidth]{figures/duck-curve4.png}
 	\hfill
-	\caption{.}
+	\caption{Prediction on US demand for 2050.}
 	\label{fig:us-duck}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/uiuc-duck.png}
+	\includegraphics[width=1.0\linewidth]{figures/uiuc-duck.png}
 	\hfill
-	\caption{.}
+	\caption{Prediction on UIUC's demand for 2050.}
 	\label{fig:uiuc-duck}
 \end{figure}
 
+
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/uiuc-hydro2.png}
+	\includegraphics[width=1.0\linewidth]{figures/uiuc-hydro2.png}
 	\hfill
-	\caption{.}
+	\caption{Hydrogen production with the excess of electricity.}
 	\label{fig:uiuc-hydro2}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figures/uiuc-hydro3.png}
+	\includegraphics[width=1.0\linewidth]{figures/uiuc-hydro3.png}
 	\hfill
-	\caption{.}
+	\caption{Peak reduction by using the produced H$_2$.}
 	\label{fig:uiuc-hydro3}
 \end{figure}
 
-\section{Conclusion}
+\section{Conclusion and Future Work}
 
+% Future work:
+Modify the reactor size to see how much more hydrogen could be produced.
+Consider other hydrogen production methods and other reactor outlet temperatures.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
